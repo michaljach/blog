@@ -1,0 +1,129 @@
+import fs from 'fs';
+import path from 'path';
+import { marked } from 'marked';
+import matter from 'gray-matter';
+
+// Configuration
+const POSTS_DIR = './posts';
+const OUTPUT_DIR = './dist';
+const TEMPLATES_DIR = './templates';
+
+// Ensure output directory exists
+if (fs.existsSync(OUTPUT_DIR)) {
+    fs.rmSync(OUTPUT_DIR, { recursive: true });
+}
+fs.mkdirSync(OUTPUT_DIR, { recursive: true });
+
+// Read templates
+const baseTemplate = fs.readFileSync(path.join(TEMPLATES_DIR, 'base.html'), 'utf-8');
+const postTemplate = fs.readFileSync(path.join(TEMPLATES_DIR, 'post.html'), 'utf-8');
+const indexTemplate = fs.readFileSync(path.join(TEMPLATES_DIR, 'index.html'), 'utf-8');
+
+// Get all markdown files
+const postFiles = fs.readdirSync(POSTS_DIR)
+    .filter(file => file.endsWith('.md'))
+    .sort()
+    .reverse();
+
+// Parse posts
+const posts = [];
+
+postFiles.forEach(file => {
+    const filePath = path.join(POSTS_DIR, file);
+    const fileContent = fs.readFileSync(filePath, 'utf-8');
+    const { data, content } = matter(fileContent);
+    
+    // Extract title from frontmatter or first heading
+    let title = data.title;
+    if (!title) {
+        const match = content.match(/^#\s+(.+)$/m);
+        title = match ? match[1] : file.replace('.md', '');
+    }
+    
+    // Extract date from frontmatter or filename or use file creation date
+    let date = data.date;
+    if (!date) {
+        const dateMatch = file.match(/^(\d{4}-\d{2}-\d{2})/);
+        if (dateMatch) {
+            date = dateMatch[1];
+        } else {
+            const stats = fs.statSync(filePath);
+            date = stats.birthtime.toISOString().split('T')[0];
+        }
+    }
+    
+    // Create slug from filename
+    const slug = file.replace('.md', '');
+    
+    posts.push({
+        slug,
+        title,
+        date,
+        content,
+        data
+    });
+});
+
+// Sort posts by date (newest first)
+posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+// Generate post pages
+posts.forEach(post => {
+    const html = marked.parse(post.content);
+    
+    // Fill post template
+    let postHtml = postTemplate
+        .replace('{{TITLE}}', post.title)
+        .replace('{{DATE}}', formatDate(post.date))
+        .replace('{{CONTENT}}', html)
+        .replace('{{ROOT}}', '../');
+    
+    // Fill base template
+    const finalHtml = baseTemplate
+        .replace('{{TITLE}}', post.title)
+        .replace('{{CONTENT}}', postHtml)
+        .replace(/{{ROOT}}/g, '../');
+    
+    // Create post directory
+    const postDir = path.join(OUTPUT_DIR, post.slug);
+    fs.mkdirSync(postDir, { recursive: true });
+    
+    // Write post HTML
+    fs.writeFileSync(path.join(postDir, 'index.html'), finalHtml);
+    
+    console.log(`Generated: ${post.slug}/index.html`);
+});
+
+// Generate index page
+let postsListHtml = posts.map(post => `
+<div class="post-item">
+    <h3><a href="${post.slug}/">${post.title}</a></h3>
+    <time>${formatDate(post.date)}</time>
+</div>
+`).join('\n');
+
+let indexContent = indexTemplate.replace('{{POSTS}}', postsListHtml);
+
+const indexHtml = baseTemplate
+    .replace('{{TITLE}}', 'My Blog')
+    .replace('{{CONTENT}}', indexContent)
+    .replace(/{{ROOT}}/g, './');
+
+fs.writeFileSync(path.join(OUTPUT_DIR, 'index.html'), indexHtml);
+console.log('Generated: index.html');
+
+// Copy CSS
+fs.copyFileSync('./style.css', path.join(OUTPUT_DIR, 'style.css'));
+console.log('Copied: style.css');
+
+// Helper function
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+    });
+}
+
+console.log(`\nBuild complete! Generated ${posts.length} posts.`);
