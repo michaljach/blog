@@ -28,11 +28,11 @@ hr {
 }
 
 body {
-    font-family: "JetBrains Mono", "Monaco", "Courier New", monospace;
+    font-family: "Space Mono", "Monaco", "Courier New", monospace;
     line-height: 1.6;
     color: var(--text);
     background: var(--bg);
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .container {
@@ -210,7 +210,7 @@ footer {
 /* Responsive */
 @media (max-width: 600px) {
     body {
-        font-size: 16px;
+        font-size: 14px;
     }
     
     .container {
