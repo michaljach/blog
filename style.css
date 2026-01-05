@@ -9,38 +9,30 @@ hr {
     display: none;
 }
 
-body {
-    font-family: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    line-height: 1.6;
-    color: #000;
-    background: #fff;
-    font-size: 18px;
+:root {
+    --bg: #fff;
+    --text: #000;
+    --text-muted: #666;
+    --link: #0066cc;
+    --code-bg: #f4f4f4;
 }
 
 @media (prefers-color-scheme: dark) {
-    body {
-        color: #fff;
-        background: #000;
+    :root {
+        --bg: #000;
+        --text: #fff;
+        --text-muted: #999;
+        --link: #6ab0ff;
+        --code-bg: #222;
     }
+}
 
-    header h1 a,
-    .post-item h3 a,
-    article > header h1 {
-        color: #fff;
-    }
-
-    article code {
-        background: #222;
-    }
-
-    article pre {
-        background: #222;
-    }
-
-    article blockquote {
-        border-left-color: #444;
-        color: #aaa;
-    }
+body {
+    font-family: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--bg);
+    font-size: 18px;
 }
 
 .container {
@@ -64,16 +56,16 @@ header h1 {
 }
 
 header h1 a {
-    color: #333;
+    color: var(--text);
     text-decoration: none;
 }
 
 header h1 a:hover {
-    color: #0066cc;
+    color: var(--link);
 }
 
 .subtitle {
-    color: #666;
+    color: var(--text-muted);
     font-size: 1rem;
 }
 
@@ -94,16 +86,16 @@ main {
 }
 
 .post-item h3 a {
-    color: #333;
+    color: var(--text);
     text-decoration: none;
 }
 
 .post-item h3 a:hover {
-    color: #0066cc;
+    color: var(--link);
 }
 
 .post-item time {
-    color: #666;
+    color: var(--text-muted);
     font-size: 0.9rem;
 }
 
@@ -119,7 +111,7 @@ article > header h1 {
 }
 
 article > header time {
-    color: #666;
+    color: var(--text-muted);
     font-size: 0.9rem;
 }
 
@@ -128,7 +120,7 @@ article > header time {
 }
 
 .post-nav a {
-    color: #0066cc;
+    color: var(--link);
     text-decoration: none;
 }
 
@@ -169,7 +161,7 @@ article li {
 }
 
 article a {
-    color: #0066cc;
+    color: var(--link);
     text-decoration: none;
 }
 
@@ -178,7 +170,7 @@ article a:hover {
 }
 
 article code {
-    background: #f4f4f4;
+    background: var(--code-bg);
     padding: 0.2rem 0.4rem;
     border-radius: 3px;
     font-family: "Monaco", "Courier New", monospace;
@@ -186,7 +178,7 @@ article code {
 }
 
 article pre {
-    background: #f4f4f4;
+    background: var(--code-bg);
     padding: 1rem;
     border-radius: 5px;
     overflow-x: auto;
@@ -199,10 +191,10 @@ article pre code {
 }
 
 article blockquote {
-    border-left: 3px solid #e0e0e0;
+    border-left: 3px solid var(--text-muted);
     padding-left: 1rem;
     margin: 1rem 0;
-    color: #666;
+    color: var(--text-muted);
     font-style: italic;
 }
 
@@ -211,7 +203,7 @@ footer {
     margin-top: 3rem;
     padding-top: 2rem;
     text-align: center;
-    color: #666;
+    color: var(--text-muted);
     font-size: 0.9rem;
 }
 
