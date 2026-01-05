@@ -1,5 +1,5 @@
 ---
-title: Coding in my bed with iPhone and OpenCode
+title: Coding on the toilet with iPhone and OpenCode
 date: 2026-01-05
 ---
 
