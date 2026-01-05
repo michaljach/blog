@@ -64,8 +64,12 @@ postFiles.forEach(file => {
     });
 });
 
-// Sort posts by date (newest first)
-posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+// Sort posts by date (newest first), then by slug (newest first) for same date
+posts.sort((a, b) => {
+    const dateCompare = new Date(b.date) - new Date(a.date);
+    if (dateCompare !== 0) return dateCompare;
+    return b.slug.localeCompare(a.slug);
+});
 
 // Generate post pages
 posts.forEach(post => {
