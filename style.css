@@ -199,7 +199,7 @@ article blockquote {
 }
 
 article img {
-    max-width: 400px;
+    max-width: min(400px, 100%);
     height: auto;
     display: block;
     margin: 1rem 0;
