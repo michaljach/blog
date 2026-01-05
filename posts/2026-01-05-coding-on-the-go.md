@@ -57,3 +57,7 @@ This transforms mobile coding from a painful exercise in thumb-typing to a conve
 For quick fixes, code reviews, and small features - absolutely. I've shipped real code from coffee shops, airports, and even while waiting in line. It's not going to replace a proper desk setup for intensive work, but for staying productive on the go, it's a game changer.
 
 The combination of cloud computing, a solid mobile terminal, and AI assistance has made truly mobile development a reality.
+
+---
+
+*This post was written and deployed entirely from an iPhone.*
