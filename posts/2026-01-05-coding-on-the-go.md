@@ -1,5 +1,5 @@
 ---
-title: Coding on the Go with OpenCode, Terminus, and Google Cloud
+title: Coding on the go with iPhone and OpenCode
 date: 2026-01-05
 ---
 
