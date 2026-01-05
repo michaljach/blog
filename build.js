@@ -120,6 +120,16 @@ console.log('Generated: index.html');
 fs.copyFileSync('./style.css', path.join(OUTPUT_DIR, 'style.css'));
 console.log('Copied: style.css');
 
+// Copy images from posts directory
+const imageExtensions = ['.png', '.jpg', '.jpeg', '.webp', '.gif'];
+const imageFiles = fs.readdirSync(POSTS_DIR)
+    .filter(file => imageExtensions.includes(path.extname(file).toLowerCase()));
+
+imageFiles.forEach(file => {
+    fs.copyFileSync(path.join(POSTS_DIR, file), path.join(OUTPUT_DIR, file));
+    console.log(`Copied: ${file}`);
+});
+
 // Helper function
 function formatDate(dateString) {
     const date = new Date(dateString);

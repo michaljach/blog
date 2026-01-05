@@ -3,6 +3,8 @@ title: Coding on the Go with OpenCode, Terminus, and Google Cloud
 date: 2026-01-05
 ---
 
+![Mobile coding setup](../mobile-setup.png)
+
 I've been experimenting with a mobile development setup that lets me code and ship from anywhere, using just my iPhone. Here's the stack that makes it possible.
 
 ## The Setup
