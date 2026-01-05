@@ -198,6 +198,13 @@ article blockquote {
     font-style: italic;
 }
 
+article img {
+    max-width: 400px;
+    height: auto;
+    display: block;
+    margin: 1rem 0;
+}
+
 /* Footer */
 footer {
     margin-top: 3rem;
