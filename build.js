@@ -52,8 +52,9 @@ postFiles.forEach(file => {
         }
     }
     
-    // Create slug from filename
-    const slug = file.replace('.md', '');
+    // Create slug from filename (strip date prefix if present)
+    let slug = file.replace('.md', '');
+    slug = slug.replace(/^\d{4}-\d{2}-\d{2}-/, '');
     
     posts.push({
         slug,
