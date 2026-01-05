@@ -28,7 +28,7 @@ hr {
 }
 
 body {
-    font-family: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: "JetBrains Mono", "Monaco", "Courier New", monospace;
     line-height: 1.6;
     color: var(--text);
     background: var(--bg);
