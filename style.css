@@ -151,6 +151,7 @@ article h3 {
 
 article p {
     margin-bottom: 1rem;
+    font-size: 20px;
 }
 
 article ul, article ol {
@@ -219,7 +220,7 @@ footer {
 /* Responsive */
 @media (max-width: 600px) {
     body {
-        font-size: 14px;
+        font-size: 20px;
     }
     
     .container {
@@ -227,6 +228,6 @@ footer {
     }
     
     header h1 {
-        font-size: 1.75rem;
+        font-size: 18px;
     }
 }
