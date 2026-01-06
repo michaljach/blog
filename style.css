@@ -63,7 +63,7 @@ header h1 a {
 }
 
 header h1 a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .subtitle {
@@ -96,6 +96,7 @@ main {
 
 .post-item h3 a:hover {
     text-decoration: underline;
+    text-underline-offset: 4px;
 }
 
 .post-item time {
@@ -131,6 +132,7 @@ article > header time {
 
 .post-nav a:hover {
     text-decoration: underline;
+    text-underline-offset: 4px;
 }
 
 /* Article content */
@@ -173,6 +175,7 @@ article a {
 
 article a:hover {
     text-decoration: underline;
+    text-underline-offset: 4px;
 }
 
 article code {
