@@ -126,7 +126,7 @@ article > header time {
 }
 
 .post-nav a {
-    color: var(--link);
+    color: var(--text-muted);
     text-decoration: none;
 }
 
