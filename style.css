@@ -63,7 +63,7 @@ header h1 a {
 }
 
 header h1 a:hover {
-    color: var(--link);
+    text-decoration: underline;
 }
 
 .subtitle {
@@ -95,7 +95,7 @@ main {
 }
 
 .post-item h3 a:hover {
-    color: var(--link);
+    text-decoration: underline;
 }
 
 .post-item time {
