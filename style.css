@@ -64,6 +64,8 @@ header h1 a {
 
 header h1 a:hover {
     text-decoration: none;
+    font-style: italic;
+    font-weight: 700;
 }
 
 .subtitle {
