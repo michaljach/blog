@@ -110,7 +110,7 @@ let postsListHtml = posts.map(post => `
 let indexContent = indexTemplate.replace('{{POSTS}}', postsListHtml);
 
 const indexHtml = baseTemplate
-    .replace('{{TITLE}}', 'My Blog')
+    .replace('{{TITLE}}', 'JACH')
     .replace('{{CONTENT}}', indexContent)
     .replace(/{{ROOT}}/g, './');
 
