@@ -34,7 +34,7 @@ body {
     line-height: 1.6;
     color: var(--text);
     background: var(--bg);
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .container {
@@ -151,7 +151,7 @@ article h3 {
 
 article p {
     margin-bottom: 1rem;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 article ul, article ol {
@@ -220,7 +220,7 @@ footer {
 /* Responsive */
 @media (max-width: 600px) {
     body {
-        font-size: 20px;
+        font-size: 16px;
     }
     
     .container {
