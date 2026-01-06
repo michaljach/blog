@@ -15,7 +15,7 @@ hr {
     --bg: #fff;
     --text: #000;
     --text-muted: #666;
-    --link: #0066cc;
+    --link: #0000ff;
     --code-bg: #f4f4f4;
 }
 
@@ -24,7 +24,7 @@ hr {
         --bg: #000;
         --text: #fff;
         --text-muted: #999;
-        --link: #6ab0ff;
+        --link: #0000ff;
         --code-bg: #222;
     }
 }
